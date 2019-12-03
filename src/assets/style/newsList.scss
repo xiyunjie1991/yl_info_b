@@ -1,0 +1,115 @@
+.newsList {
+  height: 100%;
+  overflow: auto;
+  padding: 0 px2rem(20px);
+  .news_box {
+    padding: px2rem(12px) 0;
+  }
+  .news_title {
+    margin-bottom:px2rem(16px);
+    @include font-dpr(16px);
+    font-weight: bold;
+    color: rgb(77, 71, 71);
+    letter-spacing:px2rem(1px);
+    line-height: px2rem(36px);
+  }
+  .double_img_out{
+    display: flex;
+    flex-direction: row;
+  }
+  .more_img_out{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .news_imgs{
+     
+      display: -webkit-flex; /* Safari */
+      display: flex;
+      flex-direction: row;
+      justify-content:space-between;
+      
+      .inner_img{
+        height: px2rem(130px);
+        width: 32.5%;
+        object-fit: cover;
+        border-radius: px2rem(4px);
+      }
+    }
+    .news_info {
+      @include font-dpr(11px);
+      font-weight: normal;
+      margin-top:px2rem(16px);
+      color: #A2A2A2;
+      .media_name {
+        margin-right: px2rem(10px);
+      }
+      .comment_count{
+        margin-right: px2rem(10px);
+      }
+    }
+  }
+ 
+  .one_img_out{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .only_img{
+      width: 100%;
+      height: px2rem(360px);
+      object-fit: cover;
+      border-radius: px2rem(4px);
+
+    }
+    .news_info {
+      @include font-dpr(11px);
+      font-weight: normal;
+      margin-top:px2rem(16px);
+      color: #A2A2A2;
+      .media_name {
+        margin-right: px2rem(10px);
+      }
+      .comment_count{
+        margin-right: px2rem(10px);
+      }
+    }
+  }
+  .double_img_out{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .double_img_title_and_info{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+       .news_info {
+        @include font-dpr(11px);
+        font-weight: normal;
+        margin-bottom:0;
+        color: #A2A2A2;
+        .media_name {
+          margin-right: px2rem(10px);
+        }
+        .comment_count{
+          margin-right: px2rem(10px);
+        }
+      }
+    }
+    .inner_img{
+      height: px2rem(130px);
+      width: 32.5%;
+      object-fit: cover;
+      border-radius: px2rem(4px);
+    }
+   
+  }
+  // .line{
+  //   border-bottom: 1px solid black; height:2px;margin-top: px2rem(20px);
+  // }
+
+.line{
+  border-bottom: 1px solid rgba(226, 220, 220, 0.459); height:2px;margin-top: px2rem(20px);
+}
+  
+}
+
+
