@@ -33,7 +33,6 @@ export default {
     };
   },
   mounted(){
-      console.info('tui ya ad mounted')
   },
   methods: {
     openAd() {

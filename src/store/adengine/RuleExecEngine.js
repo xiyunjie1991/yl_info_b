@@ -49,12 +49,13 @@ export const RuleExecEngine = {
   },
 
   // 随机获取搜狗广告
-  randGetOneAd_sogou: function () {
-    let count = material_sogou.materials.length;
+  randGetOneAd_sogou: function (customerName) {
+    debugger
+    let count = material_sogou.materials[customerName].length;
 
     // 随机获取一个素材
     let randIdx = Math.floor(Math.random()*count);
-    return material_sogou.materials[randIdx];
+    return material_sogou.materials[customerName][randIdx];
   },
 
   // 根据规则01植入推呀广告
@@ -65,20 +66,20 @@ export const RuleExecEngine = {
   },
 
   // 根据规则01植入搜狗广告
-  injectAdToList_sogou_roule01: function (item, index) {
+  injectAdToList_sogou_roule01: function (customerName,item, index) {
     if (this.canInjectAd_sogou_roule01(index)) {
-      item ['ad_sogou'] = this.randGetOneAd_sogou();
+      item ['ad_sogou'] = this.randGetOneAd_sogou(customerName);
       item['divid_sogouad'] = "sogouad" + index + Math.floor(Math.random()*100000);
     }
   },
 
   // 根据规则01分渠道植入广告
   injectAdToList_byCustomer_roule01: function (customerName, item, index) {
-    if (customerName === customer.kaiyao.name) {
-      this.injectAdToList_tuiya_roule01(item, index);
-    } else {
-      this.injectAdToList_sogou_roule01(item, index);
-    }
+    // if (customerName === customer.kaiyao.name) {
+      // this.injectAdToList_tuiya_roule01(item, index);
+    // } else {
+      this.injectAdToList_sogou_roule01(customerName,item, index);
+    // }
   }
 
 };

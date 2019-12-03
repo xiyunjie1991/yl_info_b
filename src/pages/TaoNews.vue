@@ -2,19 +2,16 @@
   <div>
     <div id="sss">
       <c-home-nav></c-home-nav>
-      <!-- <transition name="fadeIn"> -->
-    
         <mescroll-vue class="position-box" ref="mescroll" @init="mescrollInit" :up="upConfig">
           <c-newslist
             :listCon="dList"
-            :customer-name="customerName"
+            :customer-name="this.$route.params.customerName"
             :type="this.$route.params.type"
             v-show="!loading && ifReturnMsg"
             :flag="loadmore"
             :ifFlag="ifReturnMore"
           ></c-newslist>
         </mescroll-vue>
-      <!-- </transition> -->
     </div>
   </div>
 </template>
@@ -42,7 +39,6 @@ export default {
           }
         }
       },
-      customerName: "home",
       dList: [],
       upConfig: {
         noMoreSize: 5,
@@ -68,34 +64,30 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.path.includes(this.customerName)) {
         const type = to.params.type;
+        console.info('to type',type)
         if (Object.keys(this.list[type]).length > 0) {
           this.$store.state.ifReturnMsg = true;
           this.dList = this.list[type];
+                console.info('tthis.scrollY',this.scrollY)
+           this.mescroll.scrollTo( this.scrollY, 200 )
           return false;
         }
         this.getNewest();
-      }
     }
   },
   methods: {
-    ...mapActions(["getNews", "getMoreNews", "refreshNews"]),
+    ...mapActions(["getNews", "getMoreNews", "refreshNews","updateScrollY"]),
     upCallBack(p, mescroll) {
       this.getMoreNews({
         type: this.$route.params.type,
-        customerName: this.customerName
+        customerName: this.$route.params.customerName 
       }).then(res => {
         this.$nextTick(() => {
-          console.info("res");
           // if (this.dList.length >= 1) {
           //   this.dList = this.dList.slice(this.dList.length-11,this.dList.length-1)
-           
           // }
-             console.info("this.dList",this.dList);
           let resLength = 0
-
-
           for (let item of res) {
           let  {title,media_name,comment_count,publishtime,image_list,divid_sogouad,ad_tuiya,ad_sogou} = item
             const obj = {title,media_name,comment_count,publishtime,image_list,divid_sogouad,ad_tuiya,ad_sogou}
@@ -103,7 +95,6 @@ export default {
              resLength++
           }
           this.oldCount = this.oldCount + resLength
-          console.info('dList,oldCount',this.oldCount)
           debugger
           // if (resLength < 40) {
             
@@ -113,7 +104,7 @@ export default {
           //   mescroll.endSuccess(this.oldCount, true);
           // }
 
-          if(this.dList.length > 80){
+          if(resLength < 10){
             mescroll.endSuccess(this.dList.length , false);
           }else{
             mescroll.endSuccess(this.dList.length , true);
@@ -125,7 +116,7 @@ export default {
     downCallback(p, mescroll) {
       this.getNews({
         type: this.$route.params.type,
-        customerName: this.customerName
+        customerName: this.$route.params.customerName
       }).then(res => {
         // this.$nextTick(() => {
         // this.dList = res
@@ -138,10 +129,8 @@ export default {
       let type = this.$route.params.type;
       this.getNews({
         type: type,
-        customerName: this.customerName
+        customerName: this.$route.params.customerName
       }).then(res => {
-        debugger;
-
         this.dList = res;
       });
     },
@@ -151,6 +140,7 @@ export default {
   },
   computed: {
     ...mapState([
+       "scrollY",
       "list",
       "loading",
       "ifReturnMsg",
@@ -163,8 +153,15 @@ export default {
   },
   // 离开页面时，记录新闻的类型
   beforeRouteLeave(to, from, next) {
+    debugger
     this.$store.commit("LOG_TYPE", from.params.type);
-    next();
+  
+    if (to.path.includes("content") === -1) {
+      this.updateScrollY(0) ;
+    } else {
+       this.updateScrollY(this.mescroll.getScrollTop()) ;
+    }
+      next();
   }
 };
 </script>

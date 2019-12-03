@@ -161,7 +161,6 @@ export default {
   methods: {
     baiduId(){
       this.baiduAdCount ++
-      console.info("baidu","baidu"+ this.baiduAdCount)
       return "baidu"+ this.baiduAdCount
 
        

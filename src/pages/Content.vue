@@ -89,10 +89,7 @@
 import { mapActions, mapState, mapMutations } from "vuex";
 import CLoading from "../components/Loading.vue";
 import CWarning from "../components/Warning.vue";
-import CBack from "../components/Back.vue";
-import CComment from "../components/Comment.vue";
 import moment from "moment";
-import VueBetterScroll from "../components/BScroll";
 import "moment/locale/zh-cn";
 import { AdFilterRule } from "../store/adengine/AdFilterRule";
 import { RuleExecEngine } from "../store/adengine/RuleExecEngine";
@@ -156,9 +153,6 @@ export default {
   components: {
     CLoading,
     CWarning,
-    CBack,
-    CComment,
-    VueBetterScroll,
     CatAd,
     TuiYaAd,
     BaiduAd,

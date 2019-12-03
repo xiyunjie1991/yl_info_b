@@ -65,7 +65,6 @@ export default {
     MescrollVue
   },
   mounted() {
-    console.info('home mounted scrollY',this.scrollY)
   },
   watch: {
     $route(to, from) {
@@ -89,12 +88,10 @@ export default {
         customerName: this.customerName
       }).then(res => {
         this.$nextTick(() => {
-          console.info("res");
           // if (this.dList.length >= 1) {
           //   this.dList = this.dList.slice(this.dList.length-11,this.dList.length-1)
 
           // }
-          console.info("this.dList", this.dList);
           let resLength = 0;
 
           for (let item of res) {
@@ -122,7 +119,6 @@ export default {
             resLength++;
           }
           this.oldCount = this.oldCount + resLength;
-          console.info("dList,oldCount", this.oldCount);
           debugger;
           // if (resLength < 40) {
 

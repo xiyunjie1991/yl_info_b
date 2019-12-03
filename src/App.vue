@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <transition :name="page">
       <keep-alive>
         <router-view v-if="isRouterAlive" class="container"></router-view>
