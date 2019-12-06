@@ -1,5 +1,5 @@
 <template>
-  <div class="home_nav" v-if="channelList.length>0">
+  <div class="home_nav" >
     <ul class="home_nav_list" ref="homenav">
       <router-link
         v-for="(item, index) in channelList"
@@ -65,7 +65,19 @@ export default {
           { type: "info_constellation", text: "星座" },
           { type: "info_game", text: "游戏" }
         ],
-        kaiyao:[]
+        baixintoutiao: [
+          { type: "info_cate", text: "推荐" },
+          { type: "info_entertainment", text: "娱乐 " },
+          { type: "info_car", text: "汽车" },
+          { type: "info_finance", text: "财经" },
+          { type: "info_education", text: "教育" },
+          { type: "info_humor", text: "搞笑" },
+          { type: "info_sports", text: "体育" },
+          { type: "info_health", text: "养生" },
+          { type: "info_constellation", text: "星座" },
+          { type: "info_game", text: "游戏" }
+        ],
+        kaiyao: []
       }
     };
   }
@@ -92,7 +104,6 @@ export default {
   overflow: auto;
 }
 .home_nav_item {
-  margin-top: px2rem(10px);
   display: flex;
   flex-direction: column;
   align-items: center;

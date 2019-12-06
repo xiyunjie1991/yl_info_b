@@ -11,12 +11,13 @@ export const material_sogou = {
       {
         slotId: "1082099"   // 信息流三图
       }
+    ],
+    baixintoutiao:[
+      {
+        slotId: "1082410"   // 信息流三图
+      }
     ]
-
   }
-
-
-
 };
 
 // module.exports = material_sogou;

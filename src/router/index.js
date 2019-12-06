@@ -20,6 +20,7 @@ const routes = [
     name: 'news',
     component: TaoNews
   },
+  
   {
     path: '/content',
     name: 'content',

@@ -66,6 +66,7 @@ export default {
     $route(to, from) {
         const type = to.params.type;
         console.info('to type',type)
+    
         if (Object.keys(this.list[type]).length > 0) {
           this.$store.state.ifReturnMsg = true;
           this.dList = this.list[type];
@@ -79,6 +80,7 @@ export default {
   methods: {
     ...mapActions(["getNews", "getMoreNews", "refreshNews","updateScrollY"]),
     upCallBack(p, mescroll) {
+          debugger
       this.getMoreNews({
         type: this.$route.params.type,
         customerName: this.$route.params.customerName 
@@ -171,7 +173,7 @@ export default {
 
 .position-box {
   position: fixed;
-  top: px2rem(100px);
+  top: px2rem(80px);
   left: 0;
   right: 0;
   bottom: 0;

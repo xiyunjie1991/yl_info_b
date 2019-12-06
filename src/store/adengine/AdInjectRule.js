@@ -1,7 +1,7 @@
 
 export const AdInjectRule = {
   rule_01: {
-    startIndex: 1,
+    startIndex: 2,
     step: 3
   }
 };

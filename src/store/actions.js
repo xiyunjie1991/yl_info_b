@@ -85,8 +85,10 @@ export default {
   // 获取更多新闻
   getMoreNews ({commit, state}, payload) {
     return new Promise(resolve => {
+      debugger
       let start = state.list[payload.type].length;
       if (start < maxNewsCount) {
+        debugger
         let url = urlForGetNews(payload.type, start, start + listSize);
         axios.get(url)
           .then(res => {
